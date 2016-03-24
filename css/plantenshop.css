@@ -227,7 +227,7 @@ table.cursus td,table.cursus th
 #keuzes h3{
 	line-height:1.9em;
 	font-size:1.9em;
-	color:#CCCCCC;
+	color:white;
   	margin:0;
 	padding: 0 30px;
 }
@@ -238,8 +238,17 @@ table.cursus td,table.cursus th
 #keuzes h3:nth-of-type(5){background-color:#7B6FDF;}/*paars*/
 #keuzes h3:nth-of-type(6){background-color:#1DB8EF;}/*cerulean*/
 #keuzes h3:nth-of-type(7){background-color:#DDDF1B;}/*olijf*/
-
-
+#keuzes .ui-accordion-header, #keuzes .ui-accordion-content{
+  background-color:white;
+ } 
+#keuzes .ui-accordion-header, #keuzes .ui-accordion-content{
+  background-image:none;
+  border:none;
+  border-radius:0;
+ } 
+ #keuzes a{
+     color:#c77405;
+ }
 /************footer content****************************/
 footer li {
 	border-right:1px solid #C2B2B5;

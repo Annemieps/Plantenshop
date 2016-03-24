@@ -52,7 +52,7 @@ if(isset($_GET['page'])){
 			$tpl['body_id'] 			= "shop";					
 			//content
 			$tpl['rechts'] 				= getPlanten($soort_id, $kleur, $hoogte_min, $hoogte_max);
-			
+			$tpl['paginaScripts'] = getScriptElements("js/shop.js");
 			break;
 		
 		case "zorg":
@@ -61,7 +61,8 @@ if(isset($_GET['page'])){
 			$tpl['body_id'] 			= "zorg";					
 			//content
 			$tpl['rechts'] 				= getVerzorging();
-			
+			$tpl['paginaScripts'] = getScriptElements("js/zorg.js");
+                        
 			break;		
 		
 		case "galerij":
@@ -82,7 +83,8 @@ if(isset($_GET['page'])){
 			$tpl['body_id'] 			= "registreer";					
 			//content
 			$tpl['rechts'] 				= getRegistreer();
-			
+			$tpl['paginaScripts'] = getScriptElements(array("js/vendor/dist/jquery.validate.min.js",
+                        "js/registreer.js"));
 			break;		
 		
 		default:
@@ -97,7 +99,7 @@ else {
 		$tpl['body_id'] 				= "home";	
 		//content
 		$tpl['rechts'] 					= getHome();
-		
+		$tpl['paginaScripts']   = getScriptElements("js/home.js");
 }
 
 
