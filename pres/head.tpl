@@ -16,7 +16,7 @@
 <link rel='stylesheet' type='text/css' href='css/plantenshop.css'  />
 <link rel='stylesheet' type='text/css' href='css/forms.css'  />
 <link rel="stylesheet" type="text/css" href="js/vendor/jquery-ui.theme.min.css" />
-<link href="js/vendor/jquery-ui.structure.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="js/vendor/jquery-ui.structure.css" />
 <!-- pagina-gebondenstylesheets --></head>
 
 {$paginaStylesheets}
@@ -26,7 +26,9 @@
 <script src="js/vendor/jquery-2.2.2.min.js" type="text/javascript"></script>
 <script src="js/vendor/jquery-ui.min.js" type="text/javascript"></script>
 <script src="js/vendor/jquery-ui.js" type="text/javascript"></script>
-
+<script src="js/vendor/datapicker-nl.js" type="text/javascript"></script>
+<script src="js/vendor/datepicker-de.js" type="text/javascript"></script>
+<script src="js/vendor/datepicker-fr.js" type="text/javascript"></script>
 <!-- pagina-gebonden JS scripts-->
 {$paginaScripts}
 

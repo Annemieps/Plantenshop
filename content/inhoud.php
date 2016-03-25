@@ -369,7 +369,9 @@ function getRegistreer() {
             </section>";
 
     $str .= "<section>
-		
+		<!--start foutBox -->
+                <div class='foutBox' id='fouten'><h2>Fouten</h2><ul></ul></div>
+                <!--einde foutBox -->
             <form id='regForm' name='regForm' method='get' action='reflect_data.php'>
             <fieldset>
             <legend>Uw persoonlijke gegevens</legend>
@@ -383,7 +385,7 @@ function getRegistreer() {
             </div>
             <div>
             <label for='straat'>Straat:</label>
-            <input type='text' title='uw straat  met huisnummer'  placeholder='straat + huisnummer'  id='straat' name='straat'  />
+            <input type='text' title='uw straat  met huisnummer'  placeholder='straat + huisnummer'  id='straat' name='straat' required/>
             </div>
             <div>
             <label for='gemeente'>Gemeente:</label>
@@ -401,7 +403,8 @@ function getRegistreer() {
             <label for='geboren'>Geboortedatum<abbr class='verplicht' title='verplicht'>*</abbr>:</label>
             <input type='text' title='uw geboortedatum in het formaat 1956-12-31' placeholder='geboortedatum'  id='geboren' name='geboren'  />
             </div>
-            <div>
+            <div class='controlbox'>
+            
             <label>geslacht<abbr class='verplicht' title='verplicht'>*</abbr>:</label>
             <label class='labelRadio' for='man'>
             <input type='radio'  title='uw sexe' id='man'  name='sexe' value='m' />
@@ -409,6 +412,7 @@ function getRegistreer() {
             <label class='labelRadio' for='vrouw' >
             <input type='radio' title='uw sexe' id='vrouw' name='sexe' value='v' />
             Vrouw </label>
+            
             </div>
             </fieldset>";
 
@@ -416,20 +420,20 @@ function getRegistreer() {
             <legend>Uw groene keuzes</legend>
             <div>
             <label>uw ruimte  is een <abbr class='verplicht' title='verplicht'>*</abbr>:</label>
-            <div class='controlbox'>
-            <label class='labelCheckbox' for='ruimte_bedrijf'>
-            <input type='checkbox' title='U heeft een bedrijfsterrein dat u wil beplanten' id='ruimte_bedrijf' name='ruimte[]' value='bedrijf'   />
-            Bedrijfsterrein </label>
-            <label class='labelCheckbox' for='ruimte_tuin'>
-            <input type='checkbox'  title='U heeft een tuin aan uw huis' id='ruimte_tuin' name='ruimte[]' value='tuin'  />
-            Tuin </label>
-            <label class='labelCheckbox' for='ruimte_terras' >
-            <input type='checkbox' title='U bezit een terras waarop potplanten kunnen pronken' id='ruimte_terras' value='terras' name='ruimte[]' />
-            Terras </label>
-            <label class='labelCheckbox' for='ruimte_balkon' >
-            <input type='checkbox' title='U heeft een balkon waarop u enkele potplanten kunt zetten'   id='ruimte_balkon' value='balkon' name='ruimte[]' />
-            Balkon </label>
-            </div>
+                <div class='controlbox'>
+                    <label class='labelCheckbox' for='ruimte_bedrijf'>
+                    <input type='checkbox' title='U heeft een bedrijfsterrein dat u wil beplanten' id='ruimte_bedrijf' name='ruimte[]' value='bedrijf'   />
+                    Bedrijfsterrein </label>
+                    <label class='labelCheckbox' for='ruimte_tuin'>
+                    <input type='checkbox'  title='U heeft een tuin aan uw huis' id='ruimte_tuin' name='ruimte[]' value='tuin'  />
+                    Tuin </label>
+                    <label class='labelCheckbox' for='ruimte_terras' >
+                    <input type='checkbox' title='U bezit een terras waarop potplanten kunnen pronken' id='ruimte_terras' value='terras' name='ruimte[]' />
+                    Terras </label>
+                    <label class='labelCheckbox' for='ruimte_balkon' >
+                    <input type='checkbox' title='U heeft een balkon waarop u enkele potplanten kunt zetten'   id='ruimte_balkon' value='balkon' name='ruimte[]' />
+                    Balkon </label>
+                </div>
             </div>
             <div>
             <label for='agree'>U zoekt vnl</label>";
@@ -473,6 +477,11 @@ function getRegistreer() {
             </div>
             </fieldset>
             </form>
+            <!--start foutBox-->
+            <div class='foutBox'><a href='#fouten'>sommige ingevulde gegevens zijn 
+            foutief!</a></div>
+            <!--einde foutBox-->
+
             ";
 
 

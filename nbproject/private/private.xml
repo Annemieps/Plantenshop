@@ -5,10 +5,8 @@
         <group>
             <file>file:/C:/xampp/htdocs/plantenshop/index.php</file>
             <file>file:/C:/xampp/htdocs/plantenshop/content/inhoud.php</file>
-            <file>file:/C:/xampp/htdocs/plantenshop/pres/head.tpl</file>
-            <file>file:/C:/xampp/htdocs/plantenshop/js/about.js</file>
-            <file>file:/C:/xampp/htdocs/plantenshop/js/shop.js</file>
-            <file>file:/C:/xampp/htdocs/plantenshop/js/home.js</file>
+            <file>file:/C:/xampp/htdocs/plantenshop/js/registreer.js</file>
+            <file>file:/C:/xampp/htdocs/plantenshop/js/zorg.js</file>
         </group>
     </open-files>
 </project-private>
