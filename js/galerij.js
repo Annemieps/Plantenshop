@@ -32,6 +32,25 @@ var arrGalerij = [
     ["lelies", "Lelies", "David Fourer", "dfourer", "Lelies zijn een klassieker in de tuin, ze brengen spektakel en structuur. Goede verzorging is nodig"]
 ];
 
-$(function () {
-    $('figure').knipoog();
-});
+$(window).load(function () {
+
+    $('figure').knipoog({bgColor: "cyan", color: "navy", location: "bottom"});
+
+    //knoppen stylen:
+    $('.knop').button();
+
+    //event handlers voor knoppen
+    $('#af').on("click", function () {
+        $('figure').knipoog("disable");
+    });
+    $('#aan').on("click", function () {
+        $('figure').knipoog("enable");
+    });
+    $('#boven').on("click", function () {
+        $('figure').knipoog("option", "location", "top"); //
+    });
+    $('#stop').bind("click", function () {
+        $('figure').knipoog("destroy"); //
+    });
+
+});// einde window.load 
