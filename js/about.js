@@ -4,24 +4,22 @@
 // JavaScript Document
 
 $(function () {
-//   alert( 
-//           $('a')
-//            .addClass('rood')
-//            .filter('a[target]').addClass('groen').end()
-//            .addClass('onderlijnd').length
-//    );
-
+    //*************************************************
     $('tbody tr:odd').addClass('oneven');
     $('tbody tr:even').addClass('even');
-
+    
+    
+    //*************************************************
+    
     $('a[href^="http"]').on('click', function () {
         alert('U staat op het punt de pagina te verlaten');
     });
-
     $('<a href="#about"title="terug nr boven">terug nr boven</a>')
             .insertBefore(':header:gt(2)')
             .button({icons: {secondary: 'ui-icon-circle-triangle-n'}});
-
+    
+    
+    //*************************************************
     var lijst = ['roger', 'evelyn', 'hilde', 'jan'];
     //nieuwe ul
     var $uul = $('<ul>');
@@ -35,31 +33,62 @@ $(function () {
     //na team word de uul ingestoken.
     $('#team').after($uul);
 
+
+    //*************************************************
     // versie vr JSONgegevens
     var $container = $('<div id="teamboks">');
     var $diefrechts = $('<div id="teamgegevens">');
     var $keuzelijst = $('<select id="teamkeuzelijst">');
     var strDeOptions = '<option value="">--- het team ---</option>';
-    $.each(lijst, function (n, value) {
-        strDeOptions += '<option>' + value + '</option>';
-    })
+//    $.each(lijst, function (n, value) {
+//        strDeOptions += '<option>' + value + '</option>';
+//    })
     $keuzelijst.html(strDeOptions);
+    
+    //met custom wrapper method
+    $keuzelijst.vulSelect(lijst, "-- kies een teamlid --");
+
     $container.append($keuzelijst).prepend($diefrechts);
     $('#team').after($container);
-
+    
+    
+    //*************************************************
     //Maak de inhoudsopgave
     var root = $('article')[0]; //dom node en geen wrapped set
     var $list = $('<ol>'); //nieuwe ol
     //met id toc word leeg gemaakt en toc append de walktree.
     $('#toc').empty().append(walkTree(root, $list, enterNode, exitNode));
-
-});//einde doc.ready
+    
+    //************** AJAX call nr JSON gegevens team ************************//
+    $('#teamkeuzelijst')
+            .change(function () {
+                var waarde = $(this).val();
+                console.log(waarde + ' gekozen');
+                $.getJSON(
+                        //url
+                        'services/ajax_json_team.php',
+                        //data
+                                {teamlid: waarde},
+                        //callback functie
+                        function (jeeson) {
+                            var strHTML = "";
+                            //successcallback functie neemt als parameter de teruggestuurde gegevens
+                            if (jeeson.naam) {
+                                strHTML += "<img src='images/" + jeeson.foto + "' />";
+                                strHTML += "<h3>" + jeeson.naam + "</h3>";
+                                strHTML += "<p>leeftijd: " + jeeson.leeftijd + "</p>";
+                                strHTML += "<p>functie: " + jeeson.functie + "</p>";
+                            }
+                            $('#teamgegevens').html(strHTML);
+                        });//einde getJSON
+                    });
+//$.zegDankUTegen('meow');
+            $('<li>').html($.vandaag()).prependTo('footer ul').wordtGroen();
+        }); //einde doc.ready
 
 var arrKoppen = ["h1", "h2", "h3", "h4", "h5", "h6"];
 var arrSections = ["article", "section", "aside", "nav"];
 var getal = 1;
-
-
 var walkTree = function (root, $list, enter, exit)
 {
     var node = root;
@@ -83,7 +112,6 @@ var walkTree = function (root, $list, enter, exit)
         }
     }
     return $list;
-
 };
 /*************************/
 var checkNode = function (node) {
@@ -93,7 +121,6 @@ var checkNode = function (node) {
     return (node.nodeType == 1 && arrSections.indexOf(node.tagName.toLowerCase()) >= 0
             && node.className.indexOf(strNotoc) == -1)
 };
-
 /*************************/
 
 //huidige node word meegegeven als parameter
@@ -107,13 +134,10 @@ function enterNode(node, $list) {
             "href": "#" + getal.toString(),
             "id": "o" + getal.toString()
         });
-
         node.setAttribute("id", getal.toString());
         getal++;
-
         $a.text(zoekKoppen(node));
         $nieuw.append($a);
-
         if ($list[0].tagName == "LI") {
             var $nieuweLijst = $('<ol>').append($nieuw);
             $list.append($nieuweLijst);
@@ -127,7 +151,6 @@ function enterNode(node, $list) {
     return $list;
 }
 ;
-
 /*************************/
 var exitNode = function (node, $list) {
     //bij het verlaten van de node
@@ -139,7 +162,6 @@ var exitNode = function (node, $list) {
     }
     return $list;
 };
-
 /*************************/
 var zoekKoppen = function (node)
 {

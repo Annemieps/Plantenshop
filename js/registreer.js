@@ -101,9 +101,6 @@ $(function () {
         errorContainer: $foutBoksen,
         errorLabelContainer: $("ul", $foutBoksen),
         wrapper: "li",
-
-
-
         /*de submitHandler value  is een functie waar we de normale submit van
          het formulier oproepen, je kan hier ook andere dingen doen die je wil 
          uitvoeren bij een succesvolle submit*/
@@ -122,6 +119,24 @@ $(function () {
         });
     });
 
+    //alle dialoogvensters: instellingen
+    $(".dialoogvenster").dialog({
+        autoOpen: false,
+        buttons: {
+            "Ok": function () {
+                $(this).dialog("close");
+            }
+        },
+        modal: true,
+        width: 600
+    });
+    // de dialoog Button
+    $('#dialog_link_username')
+            .button({icons: {secondary: "ui-icon-help"}})
+            .click(function (e) {
+                e.preventDefault();
+                $('#dialog_username').dialog('open');
+            });
 
 }); //einde doc.ready 
  

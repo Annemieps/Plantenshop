@@ -49,6 +49,7 @@ $(function () {
             .last().attr({'title': 'Maximum hoogte'});
 
     $("#plantenlijst").dataTable({
+        "sAjaxSource": "services/ajax_json_dt_planten.php",
         "bPaginate": true,
         "bsort": false,
         "iDisplayLength": 20,

@@ -38,7 +38,7 @@ if(isset($_GET['page'])){
 			$tpl['paginaScripts'] = getScriptElements("js/about.js");
 			break;
 		
-		case "shop":
+		case "ajaxshop":
 			/*** Planten pagina, PHP, non-ajax ***/
 			
 			//init zoekvariabelen
@@ -51,8 +51,10 @@ if(isset($_GET['page'])){
 			$tpl['title'] 				= "de Plantenshop: ons aanbod"; 		
 			$tpl['body_id'] 			= "shop";					
 			//content
-			$tpl['rechts'] 				= getPlanten($soort_id, $kleur, $hoogte_min, $hoogte_max);
-			$tpl['paginaScripts'] = getScriptElements("js/shop.js");
+			$tpl['rechts'] 				= getAjaxPlanten();
+			$tpl['paginaScripts'] = getScriptElements(array("js/ajaxshop.js","js/vendor/DataTables-1.10.11/media/js/jquery.dataTables.min.js"));
+                        $tpl['paginaStylesheets'] = getLinkElements("js/vendor/DataTables-1.10.11/media/css/jquery.dataTables.css");
+                        
 			break;
 		
 		case "zorg":
@@ -71,7 +73,8 @@ if(isset($_GET['page'])){
 			$tpl['body_id'] 			= "galerij";					
 			//content
 			$tpl['rechts'] 				= getGalerij();
-			
+			$tpl['paginaScripts'] =  getScriptElements(array("js/vendor/lightbox/lightbox.js","js/vendor/JS/jquery.ui.knipoog.js","js/galerij.js"));
+                        $tpl['paginaStylesheets'] = getLinkElements("js/vendor/lightbox/css/lightbox.css");
 			
 
 			break;

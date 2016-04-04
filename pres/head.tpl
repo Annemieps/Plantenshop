@@ -29,6 +29,7 @@
 <script src="js/vendor/datapicker-nl.js" type="text/javascript"></script>
 <script src="js/vendor/datepicker-de.js" type="text/javascript"></script>
 <script src="js/vendor/datepicker-fr.js" type="text/javascript"></script>
+<script src="js/vendor/JS/jquery.annemie.utils.js" type="text/javascript"></script>
 <!-- pagina-gebonden JS scripts-->
 {$paginaScripts}
 
