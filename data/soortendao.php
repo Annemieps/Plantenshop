@@ -1,10 +1,10 @@
 <?php
 //datalaag
 
-require_once("/entities/soorten.php"); //pad steeds vanuit de controller
+require_once("entities/soorten.php"); //pad steeds vanuit de controller
 require_once("abstractdao.php"); //connectiegegevens
-require_once("/exceptions/missingdataexception.php");
-require_once("/exceptions/duplicatekeyexception.php");
+require_once("exceptions/missingdataexception.php");
+require_once("exceptions/duplicatekeyexception.php");
 
 class SoortenDAO extends AbstractDAO{
 

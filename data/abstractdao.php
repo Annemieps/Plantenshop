@@ -1,6 +1,6 @@
 <?php
 //php5 nodig
-require_once("DBConfig.php"); //connectiegegevens
+require_once("dbconfig.php"); //connectiegegevens
 
 abstract class AbstractDAO{
 	

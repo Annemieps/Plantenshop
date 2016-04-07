@@ -1,8 +1,8 @@
 <?php
 //datalaag
 
-require_once("entities/planten.php"); //pad steeds vanuit de controller
-require_once("entities/soorten.php"); //pad steeds vanuit de controller
+require_once(__DIR__."/../entities/planten.php"); //pad steeds vanuit de controller
+require_once(__DIR__."/../entities/soorten.php"); //pad steeds vanuit de controller
 require_once("abstractdao.php"); //connectiegegevens
 
 class PlantenDAO extends AbstractDAO{
@@ -24,7 +24,7 @@ class PlantenDAO extends AbstractDAO{
 			$hoogte_max = intval($hoogte_max);
 			$soort_id 	= (empty($soort_id))?"%":$soort_id;
 			
-			$sqlAlleCriteria  =  "SELECT p.art_code as code, p.plantennm as naam, p.kleur, p.hoogte, p.bl_b as beginbloei, p.bl_e as eindebloei, p.prijs, s.soort";
+			$sqlAlleCriteria  =  "SELECT p.plantennm as naam, p.kleur, p.hoogte, p.bl_b as beginbloei, p.bl_e as eindebloei, p.prijs, s.soort";
 			$sqlAlleCriteria .= " FROM planten p ";
 			$sqlAlleCriteria .= " INNER JOIN soorten s ON p.soort_id = s.soort_id";
 			$sqlAlleCriteria .= " WHERE (p.kleur LIKE '".$kleur . "' OR p.kleur IS NULL)";

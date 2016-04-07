@@ -52,7 +52,7 @@ if(isset($_GET['page'])){
 			$tpl['body_id'] 			= "shop";					
 			//content
 			$tpl['rechts'] 				= getAjaxPlanten();
-			$tpl['paginaScripts'] = getScriptElements(array("js/ajaxshop.js","js/vendor/DataTables-1.10.11/media/js/jquery.dataTables.min.js"));
+			$tpl['paginaScripts'] = getScriptElements(array("js/ajaxshop.js","js/vendor/DataTables-1.10.11/media/js/jquery.dataTables.min.js","js/vendor/DataTables-1.10.11/media/js/dataTables.fnReloadAjax.js"));
                         $tpl['paginaStylesheets'] = getLinkElements("js/vendor/DataTables-1.10.11/media/css/jquery.dataTables.css");
                         
 			break;

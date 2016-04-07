@@ -31,10 +31,14 @@ $(function () {
         slide: function (event, ui) {
             $("#hoogte_min").val($(this).slider("values", 0));
             $("#hoogte_max").val($(this).slider("values", 1));
+            herlaadTabel();
+
         },
         stop: function (event, ui) {
             $("#hoogte_min").val($(this).slider("values", 0));
             $("#hoogte_max").val($(this).slider("values", 1));
+            herlaadTabel();
+
         }
     });
 
@@ -47,9 +51,31 @@ $(function () {
             .first().attr({'title': 'Minimum hoogte'})
             .end()
             .last().attr({'title': 'Maximum hoogte'});
+    /*******************event handlers**********************************************/
+    $("#kleur, #soort_id").change(function () {
+        herlaadTabel();
+    });
 
-    $("#plantenlijst").dataTable({
+    function herlaadTabel() {
+        var qs = $('form').serialize();
+        var qsa = $('form').serializeArray();
+        console.log(qs);
+        console.log(qsa);
+        //ajaxcall vr nieuwe gegevens vanuit sAjaxSource
+        oTable.fnReloadAjax();
+    }
+    ;
+
+    /*******************dataTable**********************************************/
+    var oTable = $("#plantenlijst").dataTable({
         "sAjaxSource": "services/ajax_json_dt_planten.php",
+        "fnServerData": function (sSource, aoData, fnCallback) {
+            $.getJSON(sSource,
+                    $('form').serializeArray(),
+                    function (json) {
+                        fnCallback(json);
+                    });
+        },
         "bPaginate": true,
         "bsort": false,
         "iDisplayLength": 20,
@@ -57,14 +83,14 @@ $(function () {
         "sPaginationType": "full_numbers",
         "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Alle records"]],
         "bProcessing": true,
-        "aaSorting": [[6,'asc'], [2,'desc']],
+        "aaSorting": [[6, 'asc'], [2, 'desc']],
         "aoColumnDefs": [
-                { "bVisible": false, "aTargets": [ 5 ] },
-                { "bSortable": false, "aTargets": [ 2, 6 ] },
-                { "asSorting": [ "desc" ], "aTargets": [ 3 ] },
-                { "bSearchable": false, "sTitle": "Rubriek", "aTargets": [ 6 ] },
-                { "sTitle": "Lengte", "sWidth": "5%", "aTargets": [ 2 ] },
-                { "sClass": "dt_fluo", "aTargets": [ 0 ] }
+            {"bVisible": false, "aTargets": [5]},
+            {"bSortable": false, "aTargets": [2, 6]},
+            {"asSorting": ["desc"], "aTargets": [3]},
+            {"bSearchable": false, "sTitle": "Rubriek", "aTargets": [6]},
+            {"sTitle": "Lengte", "sWidth": "5%", "aTargets": [2]},
+            {"sClass": "dt_fluo", "aTargets": [0]}
         ],
         "oLanguage": {"sUrl": "js/vendor/DataTables-1.10.11/media/js/datatables.nederlands.txt"}
     });
@@ -105,4 +131,4 @@ function toggleZoeken(toon, $lienk, $el) {
     }
 }
 ;
-  
+
